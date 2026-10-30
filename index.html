@@ -3,139 +3,111 @@
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#030914">
-<title>BANGER Fantasy NHL</title>
+<title>BANGER Fantasy NHL 2100</title>
 <style>
 :root{
- --bg:#030914;--panel:#081629;--panel2:#0c2039;
- --blue:#00baff;--cyan:#55edff;--red:#ff355d;
- --white:#eaf8ff;--muted:#7895ad;--green:#3dffb0;
- --line:rgba(65,190,255,.23);
+--bg:#030914;--panel:#08182c;--panel2:#0c2540;
+--blue:#00baff;--cyan:#55edff;--red:#ff355d;
+--white:#eaf8ff;--muted:#7895ad;--green:#3dffb0;
+--line:rgba(65,190,255,.25)
 }
 *{box-sizing:border-box}
-body{
- margin:0;background:var(--bg);color:var(--white);
- font-family:Arial,Helvetica,sans-serif;overflow-x:hidden;
-}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
 button,input,select{font:inherit}
 button{cursor:pointer}
 #intro{
- position:fixed;inset:0;z-index:9999;background:#020713;
- display:flex;align-items:center;justify-content:center;
- flex-direction:column;overflow:hidden;
+position:fixed;inset:0;z-index:9999;background:#020713;
+display:flex;align-items:center;justify-content:center;
+flex-direction:column;overflow:hidden
 }
 .intro-ring{
- position:absolute;width:75vw;height:75vw;max-width:650px;max-height:650px;
- border:2px solid rgba(0,186,255,.45);border-radius:50%;
- box-shadow:0 0 60px #007dff,inset 0 0 60px #007dff;
- animation:ring 3s linear infinite;
+position:absolute;width:75vw;height:75vw;max-width:650px;max-height:650px;
+border:2px solid rgba(0,186,255,.5);border-radius:50%;
+box-shadow:0 0 60px #007dff,inset 0 0 60px #007dff;
+animation:ring 3s linear infinite
 }
 .intro-logo{
- z-index:2;text-align:center;font-size:clamp(48px,13vw,110px);
- font-weight:1000;letter-spacing:5px;font-style:italic;
- color:white;text-shadow:0 0 12px #00baff,0 0 45px #008cff;
- animation:logoIn 1.3s ease-out;
+z-index:2;text-align:center;font-size:clamp(48px,13vw,110px);
+font-weight:1000;letter-spacing:5px;font-style:italic;
+color:white;text-shadow:0 0 12px #00baff,0 0 45px #008cff
 }
 .intro-logo small{display:block;font-size:16px;letter-spacing:9px;color:var(--cyan)}
-.intro-sub{z-index:2;margin-top:35px;color:var(--cyan);letter-spacing:5px;font-size:11px}
+.intro-sub{z-index:2;margin-top:30px;color:var(--cyan);letter-spacing:4px;font-size:10px}
 .loading{z-index:2;width:240px;height:5px;background:#102b47;margin-top:18px;border-radius:9px;overflow:hidden}
 .loading span{display:block;height:100%;width:0;background:var(--cyan);box-shadow:0 0 15px var(--cyan);animation:load 3s linear forwards}
 @keyframes ring{to{transform:rotate(360deg)}}
-@keyframes logoIn{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
 @keyframes load{to{width:100%}}
-@keyframes pulse{50%{opacity:.45}}
 @keyframes float{50%{transform:translateY(-8px)}}
-#app{display:none;min-height:100vh}
 .topbar{
- height:65px;display:flex;align-items:center;justify-content:space-between;
- padding:0 20px;background:rgba(3,12,26,.95);
- border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;
- backdrop-filter:blur(15px);
+height:65px;display:flex;align-items:center;justify-content:space-between;
+padding:0 20px;background:#040e20;border-bottom:1px solid var(--line);
+position:sticky;top:0;z-index:50
 }
-.brand{font-size:25px;font-weight:1000;font-style:italic;letter-spacing:2px;color:white;text-shadow:0 0 15px var(--blue)}
-.brand span{color:var(--cyan);font-size:10px;display:block;letter-spacing:5px}
-.top-right{display:flex;gap:10px;align-items:center;font-size:11px;color:var(--cyan)}
-.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 10px var(--green)}
+.brand{font-size:25px;font-weight:1000;font-style:italic;letter-spacing:2px;text-shadow:0 0 15px var(--blue)}
+.brand span{display:block;color:var(--cyan);font-size:10px;letter-spacing:5px}
+.top-right{display:flex;gap:9px;align-items:center;font-size:10px;color:var(--cyan)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
 .layout{display:grid;grid-template-columns:205px 1fr;min-height:calc(100vh - 65px)}
-.sidebar{
- background:#050f20;border-right:1px solid var(--line);padding:18px 12px;
-}
+.sidebar{background:#050f20;border-right:1px solid var(--line);padding:18px 12px}
 .navbtn{
- width:100%;display:flex;gap:12px;align-items:center;text-align:left;
- padding:14px 13px;margin-bottom:6px;border:1px solid transparent;
- background:transparent;color:#91aabe;border-radius:9px;font-weight:bold;
+width:100%;display:flex;gap:12px;align-items:center;text-align:left;
+padding:14px 13px;margin-bottom:6px;border:1px solid transparent;
+background:transparent;color:#91aabe;border-radius:9px;font-weight:bold
 }
-.navbtn:hover,.navbtn.active{
- color:white;border-color:var(--line);
- background:linear-gradient(100deg,rgba(0,186,255,.2),rgba(0,186,255,.03));
- box-shadow:inset 3px 0 var(--blue),0 0 15px rgba(0,186,255,.08);
+.navbtn.active,.navbtn:hover{
+color:white;border-color:var(--line);
+background:linear-gradient(100deg,rgba(0,186,255,.2),rgba(0,186,255,.03));
+box-shadow:inset 3px 0 var(--blue)
 }
 .navicon{font-size:19px;width:24px;text-align:center}
 main{padding:20px;min-width:0;max-width:1600px;width:100%;margin:auto}
 .page{display:none}.page.active{display:block}
-.heading{
- display:flex;justify-content:space-between;align-items:center;
- margin-bottom:18px;gap:12px;flex-wrap:wrap;
-}
+.heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px;flex-wrap:wrap}
 h1{font-size:25px;margin:0;letter-spacing:1px}
 h2{font-size:17px;margin:0 0 14px}
 .eyebrow{font-size:10px;letter-spacing:3px;color:var(--cyan);margin-bottom:6px}
-.muted{color:var(--muted)}
-.small{font-size:11px;color:var(--muted)}
+.muted,.small{color:var(--muted)}.small{font-size:11px}
 .panel{
- background:linear-gradient(145deg,rgba(12,32,57,.95),rgba(5,15,30,.97));
- border:1px solid var(--line);border-radius:13px;padding:17px;
- box-shadow:0 8px 30px rgba(0,0,0,.22);
+background:linear-gradient(145deg,rgba(12,32,57,.96),rgba(5,15,30,.98));
+border:1px solid var(--line);border-radius:13px;padding:17px;
+box-shadow:0 8px 30px rgba(0,0,0,.22)
 }
-.grid{display:grid;gap:14px}
-.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.grid4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid{display:grid;gap:14px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}
 .arena{
- position:relative;overflow:hidden;min-height:360px;border-radius:17px;
- border:1px solid rgba(0,186,255,.55);
- background:
- radial-gradient(ellipse at 50% 80%,rgba(0,160,255,.3),transparent 48%),
- linear-gradient(180deg,#071a34,#030914 85%);
- box-shadow:0 0 35px rgba(0,140,255,.17),inset 0 0 45px rgba(0,140,255,.1);
+position:relative;overflow:hidden;min-height:360px;border-radius:17px;
+border:1px solid rgba(0,186,255,.55);
+background:radial-gradient(ellipse at 50% 80%,rgba(0,160,255,.3),transparent 48%),linear-gradient(180deg,#071a34,#030914 85%);
+box-shadow:0 0 35px rgba(0,140,255,.17),inset 0 0 45px rgba(0,140,255,.1)
 }
 .arena:before{
- content:"";position:absolute;inset:0;opacity:.5;
- background:repeating-linear-gradient(0deg,transparent 0 38px,rgba(0,190,255,.08) 39px 40px);
- pointer-events:none;
+content:"";position:absolute;inset:0;opacity:.5;
+background:repeating-linear-gradient(0deg,transparent 0 38px,rgba(0,190,255,.08) 39px 40px)
 }
+.arena-glow{position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(0,160,255,.14);filter:blur(35px);animation:float 4s infinite}
+.arena-glow.a{top:10%;left:5%}.arena-glow.b{right:5%;bottom:5%}
 .arena-head{position:relative;z-index:2;padding:18px;text-align:center}
 .arena-title{font-weight:900;letter-spacing:5px;color:var(--cyan);font-size:12px}
 .rink{
- position:relative;width:min(82%,700px);height:205px;margin:15px auto 0;
- border:3px solid rgba(93,220,255,.8);border-radius:100px;
- background:linear-gradient(180deg,rgba(190,240,255,.12),rgba(0,100,200,.04));
- box-shadow:0 0 25px rgba(0,186,255,.35),inset 0 0 30px rgba(0,186,255,.18);
- transform:perspective(500px) rotateX(12deg);
+position:relative;width:min(82%,700px);height:205px;margin:15px auto 0;
+border:3px solid rgba(93,220,255,.8);border-radius:100px;
+background:linear-gradient(180deg,rgba(190,240,255,.12),rgba(0,100,200,.04));
+box-shadow:0 0 25px rgba(0,186,255,.35),inset 0 0 30px rgba(0,186,255,.18);
+transform:perspective(500px) rotateX(12deg)
 }
-.rink:before{
- content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#ff496a;
-}
-.rink:after{
- content:"";position:absolute;left:50%;top:50%;width:70px;height:70px;
- border:2px solid rgba(0,186,255,.7);border-radius:50%;transform:translate(-50%,-50%);
-}
+.rink:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#ff496a}
+.rink:after{content:"";position:absolute;left:50%;top:50%;width:70px;height:70px;border:2px solid rgba(0,186,255,.7);border-radius:50%;transform:translate(-50%,-50%)}
 .rink-line{position:absolute;top:0;bottom:0;width:2px;background:rgba(0,186,255,.7)}
 .rink-line.one{left:25%}.rink-line.two{right:25%}
 .rink-team{
- position:absolute;top:50%;transform:translateY(-50%);
- width:35%;text-align:center;font-weight:900;font-size:clamp(12px,2vw,22px);
- text-shadow:0 0 12px var(--blue);z-index:2;overflow-wrap:anywhere;
+position:absolute;top:50%;transform:translateY(-50%);width:35%;
+text-align:center;font-weight:900;font-size:clamp(12px,2vw,22px);
+text-shadow:0 0 12px var(--blue);z-index:2;overflow-wrap:anywhere
 }
 .rink-team.left{left:2%}.rink-team.right{right:2%}
 .rink-team small{display:block;font-size:9px;color:var(--cyan);letter-spacing:2px;margin-bottom:8px}
 .rink-bottom{text-align:center;color:var(--cyan);font-size:10px;letter-spacing:3px;margin:18px}
-.arena-glow{
- position:absolute;width:160px;height:160px;border-radius:50%;
- background:rgba(0,160,255,.14);filter:blur(35px);animation:float 4s ease-in-out infinite;
-}
-.arena-glow.a{top:10%;left:5%}.arena-glow.b{right:5%;bottom:5%;animation-delay:1s}
 .statline{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
 .statbox{background:rgba(0,0,0,.2);padding:12px;border:1px solid var(--line);border-radius:9px}
 .statbox strong{display:block;font-size:22px;color:var(--cyan)}
@@ -145,271 +117,456 @@ h2{font-size:17px;margin:0 0 14px}
 .vs{font-weight:1000;color:var(--red);font-size:22px}
 .score{font-size:34px;color:var(--cyan);font-weight:900;margin-top:8px}
 .catrow{display:grid;grid-template-columns:55px 1fr 55px;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid rgba(80,150,200,.13);font-size:12px}
-.catrow:last-child{border:0}
-.catname{font-weight:bold;color:#b8d9ed}
-.catval{text-align:center;font-variant-numeric:tabular-nums}
-.winner{color:var(--green);font-weight:bold}
-.loser{color:var(--red)}
-.duel{
- display:grid;grid-template-columns:1fr auto 1fr;gap:7px;align-items:center;
- padding:12px 10px;border-bottom:1px solid rgba(80,150,200,.15);font-size:11px;
-}
-.duel:last-child{border:0}
-.duel .team:last-child{text-align:right}
-.duel .team{overflow-wrap:anywhere}
-.duel .dash{color:var(--cyan);font-weight:bold}
+.catname{font-weight:bold;color:#b8d9ed}.catval{text-align:center;font-variant-numeric:tabular-nums}
+.winner{color:var(--green);font-weight:bold}.loser{color:var(--red)}
+.duel{display:grid;grid-template-columns:1fr auto 1fr;gap:7px;align-items:center;padding:12px 10px;border-bottom:1px solid rgba(80,150,200,.15);font-size:11px}
+.duel .team:last-child{text-align:right}.duel .team{overflow-wrap:anywhere}
 .duel.you{background:rgba(0,186,255,.1);border:1px solid var(--line);border-radius:8px}
-.btn{
- border:1px solid rgba(0,186,255,.5);background:linear-gradient(120deg,#07517a,#07304f);
- color:white;padding:10px 14px;border-radius:8px;font-weight:bold;font-size:11px;
-}
-.btn:hover{filter:brightness(1.3);box-shadow:0 0 15px rgba(0,186,255,.25)}
+.btn{border:1px solid rgba(0,186,255,.5);background:linear-gradient(120deg,#07517a,#07304f);color:white;padding:10px 14px;border-radius:8px;font-weight:bold;font-size:11px}
 .btn.red{border-color:rgba(255,53,93,.5);background:#46172a}
-.btn.ghost{background:transparent}
-.btn.green{background:#064b3a;border-color:#20b98a}
+.btn.ghost{background:transparent}.btn.green{background:#064b3a;border-color:#20b98a}
 .actions{display:flex;gap:8px;flex-wrap:wrap}
-input,select{
- background:#041326;color:white;border:1px solid #1b4668;
- border-radius:7px;padding:10px;width:100%;outline:none;
-}
-input:focus,select:focus{border-color:var(--cyan);box-shadow:0 0 10px rgba(0,186,255,.15)}
+input,select{background:#041326;color:white;border:1px solid #1b4668;border-radius:7px;padding:10px;width:100%;outline:none}
+input:focus,select:focus{border-color:var(--cyan)}
 label{display:block;color:var(--muted);font-size:10px;margin:10px 0 5px}
 .formgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:11px}
+.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;white-space:nowrap;font-size:11px}
 th{text-align:left;color:var(--cyan);font-size:10px;letter-spacing:1px}
 td,th{padding:11px 9px;border-bottom:1px solid rgba(80,150,200,.15)}
-td{color:#d9eefa}
-tr:hover td{background:rgba(0,186,255,.04)}
-.slotgroup{margin:15px 0}
-.slot-title{font-size:11px;color:var(--cyan);letter-spacing:2px;margin-bottom:7px}
-.slot{
- display:flex;align-items:center;justify-content:space-between;gap:10px;
- padding:10px;background:rgba(0,0,0,.2);border:1px solid rgba(60,130,180,.2);
- border-radius:7px;margin-bottom:5px;font-size:11px;
-}
+.slotgroup{margin:15px 0}.slot-title{font-size:11px;color:var(--cyan);letter-spacing:2px;margin-bottom:7px}
+.slot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px;background:rgba(0,0,0,.2);border:1px solid rgba(60,130,180,.2);border-radius:7px;margin-bottom:5px;font-size:11px}
 .slot.empty{border-style:dashed;color:#607b91}
-.slot button{padding:5px 8px;font-size:9px}
-.player-name{font-weight:bold}
 .pill{font-size:9px;color:var(--cyan);border:1px solid var(--line);padding:4px 7px;border-radius:20px}
 .addcount{font-size:32px;color:var(--green);font-weight:900}
 .progress{height:7px;background:#102c46;border-radius:8px;overflow:hidden;margin:9px 0}
 .progress span{display:block;height:100%;background:linear-gradient(90deg,#007dff,#4df5ff)}
 .footer{text-align:center;color:#42647e;font-size:9px;padding:25px;letter-spacing:2px}
-#toast{
- position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
- background:#0c2942;border:1px solid var(--cyan);padding:12px 18px;
- border-radius:9px;z-index:1000;display:none;box-shadow:0 0 20px #0066aa;
- font-size:12px;
-}
-.modal{
- display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;
- align-items:center;justify-content:center;padding:15px;
-}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0c2942;border:1px solid var(--cyan);padding:12px 18px;border-radius:9px;z-index:10000;display:none;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;align-items:center;justify-content:center;padding:15px}
 .modal.open{display:flex}
-.modalbox{
- width:min(650px,100%);max-height:90vh;overflow:auto;
- background:#07182b;border:1px solid var(--cyan);border-radius:13px;padding:20px;
- box-shadow:0 0 35px rgba(0,186,255,.25);
-}
+.modalbox{width:min(650px,100%);max-height:90vh;overflow:auto;background:#07182b;border:1px solid var(--cyan);border-radius:13px;padding:20px}
 .modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .close{background:transparent;color:white;border:0;font-size:25px}
 .mobile-nav{display:none}
 @media(max-width:850px){
- .layout{grid-template-columns:1fr}
- .sidebar{display:none}
- .mobile-nav{
-  display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;
-  background:#041020;border-top:1px solid var(--line);
-  justify-content:space-around;padding:7px 2px;
- }
- .mobile-nav button{background:transparent;border:0;color:#91aabe;font-size:9px;padding:5px}
- .mobile-nav button b{display:block;font-size:19px;margin-bottom:3px}
- main{padding:12px 10px 80px}
- .grid3,.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}
- .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .arena{min-height:320px}
- .rink{height:165px;width:94%}
- .statline{grid-template-columns:repeat(2,1fr)}
+.layout{grid-template-columns:1fr}.sidebar{display:none}
+.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#041020;border-top:1px solid var(--line);justify-content:space-around;padding:7px 2px}
+.mobile-nav button{background:transparent;border:0;color:#91aabe;font-size:9px;padding:5px}
+.mobile-nav button b{display:block;font-size:19px;margin-bottom:3px}
+main{padding:12px 10px 80px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.arena{min-height:320px}.rink{height:165px;width:94%}.statline{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:420px){
- .grid2{grid-template-columns:1fr}
- h1{font-size:20px}
- .topbar{padding:0 12px}
- .top-right{font-size:9px}
- .rink-team{font-size:11px}
-}
+@media(max-width:420px){.grid2{grid-template-columns:1fr}h1{font-size:20px}.topbar{padding:0 12px}.top-right{font-size:9px}.rink-team{font-size:11px}}
 </style>
 </head>
 <body>
 
 <div id="intro">
- <div class="intro-ring"></div>
- <div class="intro-logo">BANGER<small>FANTASY NHL</small></div>
- <div class="intro-sub">VSTUPUJEŠ DO ARÉNY</div>
- <div class="loading"><span></span></div>
- <div class="intro-sub">TVŮJ TÝM. TVÉ KATEGORIE. TVŮJ BANGER.</div>
+<div class="intro-ring"></div>
+<div class="intro-logo">BANGER<small>FANTASY NHL</small></div>
+<div class="intro-sub">VSTUPUJEŠ DO ARÉNY</div>
+<div class="loading"><span></span></div>
+<div class="intro-sub">TVŮJ TÝM. TVÉ KATEGORIE. TVŮJ BANGER.</div>
 </div>
 
-<div id="app">
+<div id="app" style="display:none">
 <header class="topbar">
- <div class="brand">BANGER<span>FANTASY NHL 2100</span></div>
- <div class="top-right"><span class="live-dot"></span> SYSTEM ONLINE <span id="clock"></span></div>
+<div class="brand">BANGER<span>FANTASY NHL 2100</span></div>
+<div class="top-right"><span class="dot"></span> SYSTEM ONLINE <span id="clock"></span></div>
 </header>
-
 <div class="layout">
 <aside class="sidebar">
- <div class="eyebrow">HOLOGRAPHIC CONTROL</div>
- <button class="navbtn active" data-page="home"><span class="navicon">◈</span> ARÉNA</button>
- <button class="navbtn" data-page="matchup"><span class="navicon">⚔</span> MŮJ MATCHUP</button>
- <button class="navbtn" data-page="league"><span class="navicon">🏆</span> LIGA 14</button>
- <button class="navbtn" data-page="roster"><span class="navicon">🏒</span> MOJE SESTAVA</button>
- <button class="navbtn" data-page="players"><span class="navicon">👤</span> HRÁČI</button>
- <button class="navbtn" data-page="waivers"><span class="navicon">⇅</span> WAIVERS</button>
- <button class="navbtn" data-page="settings"><span class="navicon">⚙</span> NASTAVENÍ</button>
- <div class="panel" style="margin-top:25px;padding:12px">
-  <div class="eyebrow">WEEKLY ADDS</div>
-  <div class="addcount" id="sideAdds">4/4</div>
-  <div class="progress"><span id="sideProgress" style="width:100%"></span></div>
-  <div class="small">Reset každé pondělí</div>
- </div>
+<div class="eyebrow">HOLOGRAPHIC CONTROL</div>
+<button class="navbtn active" data-page="home">◈ ARÉNA</button>
+<button class="navbtn" data-page="matchup">⚔ MŮJ MATCHUP</button>
+<button class="navbtn" data-page="league">🏆 LIGA 14</button>
+<button class="navbtn" data-page="roster">🏒 MOJE SESTAVA</button>
+<button class="navbtn" data-page="players">👤 HRÁČI</button>
+<button class="navbtn" data-page="waivers">⇅ WAIVERS</button>
+<button class="navbtn" data-page="settings">⚙ NASTAVENÍ</button>
+<div class="panel" style="margin-top:25px;padding:12px">
+<div class="eyebrow">WEEKLY ADDS</div><div class="addcount" id="sideAdds">4/4</div>
+<div class="progress"><span id="sideProgress" style="width:100%"></span></div>
+<div class="small">Reset každé pondělí</div>
+</div>
 </aside>
-
 <main>
-<!-- HOME -->
+
 <section class="page active" id="page-home">
- <div class="heading">
-  <div><div class="eyebrow">WELCOME TO YOUR HOCKEY WORLD</div><h1>HOLOGRAFICKÁ ARÉNA</h1></div>
-  <span class="pill" id="weekLabel">FANTASY WEEK</span>
- </div>
- <div class="arena">
-  <div class="arena-glow a"></div><div class="arena-glow b"></div>
-  <div class="arena-head">
-   <div class="arena-title">◈ BANGER CENTRAL ICE ◈</div>
-   <div class="small" style="margin-top:8px">14 TEAMS / 11 CATEGORIES / ONE CHAMPION</div>
-  </div>
-  <div class="rink">
-   <div class="rink-line one"></div><div class="rink-line two"></div>
-   <div class="rink-team left"><small>HOME TEAM</small><span id="arenaMyTeam">MALATOVO STARS</span></div>
-   <div class="rink-team right"><small>AWAY TEAM</small><span id="arenaOpponent">OPPONENT</span></div>
-  </div>
-  <div class="rink-bottom">THE ICE IS YOURS</div>
- </div>
- <div class="statline">
-  <div class="statbox"><strong id="homeAdds">4/4</strong><span>WAIVER ADDS</span></div>
-  <div class="statbox"><strong>14</strong><span>TEAMS IN LEAGUE</span></div>
-  <div class="statbox"><strong>11</strong><span>H2H CATEGORIES</span></div>
-  <div class="statbox"><strong id="rosterCount">0/22</strong><span>ROSTER PLAYERS</span></div>
- </div>
- <div class="grid grid2" style="margin-top:15px">
-  <div class="panel">
-   <div class="heading"><div><div class="eyebrow">WEEKLY BATTLE</div><h2>TVŮJ AKTUÁLNÍ MATCHUP</h2></div><button class="btn" onclick="showPage('matchup')">DETAIL →</button></div>
-   <div class="matchteams">
-    <strong id="homeTeamName">MALATOVO STARS</strong><span class="vs">VS</span><strong id="homeOppName">OPPONENT</strong>
-   </div>
-   <div class="score" id="homeScore">— : —</div>
-   <div class="small" style="text-align:center">Vítězné kategorie / 11</div>
-  </div>
-  <div class="panel">
-   <div class="heading"><div><div class="eyebrow">LEAGUE OVERVIEW</div><h2>OSTATNÍ DUELY</h2></div><button class="btn" onclick="showPage('league')">VŠECHNY →</button></div>
-   <div id="homeDuels"></div>
-  </div>
- </div>
- <div class="panel" style="margin-top:15px">
-  <div class="heading"><div><div class="eyebrow">TONIGHT ON ICE</div><h2>TVÁ AKTIVNÍ SESTAVA</h2></div><button class="btn" onclick="showPage('roster')">UPRAVIT SESTAVU</button></div>
-  <div id="homeRoster" class="small">Zatím nemáš vložené hráče.</div>
- </div>
+<div class="heading"><div><div class="eyebrow">WELCOME TO YOUR HOCKEY WORLD</div><h1>HOLOGRAFICKÁ ARÉNA</h1></div><span class="pill" id="weekLabel">FANTASY WEEK</span></div>
+<div class="arena">
+<div class="arena-glow a"></div><div class="arena-glow b"></div>
+<div class="arena-head"><div class="arena-title">◈ BANGER CENTRAL ICE ◈</div><div class="small" style="margin-top:8px">14 TEAMS / 11 CATEGORIES / ONE CHAMPION</div></div>
+<div class="rink">
+<div class="rink-line one"></div><div class="rink-line two"></div>
+<div class="rink-team left"><small>HOME TEAM</small><span id="arenaMyTeam">MALATOVO STARS</span></div>
+<div class="rink-team right"><small>AWAY TEAM</small><span id="arenaOpponent">OPPONENT</span></div>
+</div>
+<div class="rink-bottom">THE ICE IS YOURS</div>
+</div>
+<div class="statline">
+<div class="statbox"><strong id="homeAdds">4/4</strong><span>WAIVER ADDS</span></div>
+<div class="statbox"><strong>14</strong><span>TEAMS IN LEAGUE</span></div>
+<div class="statbox"><strong>11</strong><span>H2H CATEGORIES</span></div>
+<div class="statbox"><strong id="rosterCount">0/22</strong><span>ROSTER PLAYERS</span></div>
+</div>
+<div class="grid grid2" style="margin-top:15px">
+<div class="panel">
+<div class="heading"><div><div class="eyebrow">WEEKLY BATTLE</div><h2>TVŮJ AKTUÁLNÍ MATCHUP</h2></div><button class="btn" onclick="showPage('matchup')">DETAIL →</button></div>
+<div class="matchteams"><strong id="homeTeamName">MALATOVO STARS</strong><span class="vs">VS</span><strong id="homeOppName">OPPONENT</strong></div>
+<div class="score" id="homeScore">— : —</div>
+<div class="small" style="text-align:center">Vítězné kategorie / 11</div>
+</div>
+<div class="panel">
+<div class="heading"><div><div class="eyebrow">LEAGUE OVERVIEW</div><h2>OSTATNÍ DUELY</h2></div><button class="btn" onclick="showPage('league')">VŠECHNY →</button></div>
+<div id="homeDuels"></div>
+</div>
+</div>
+<div class="panel" style="margin-top:15px">
+<div class="heading"><div><div class="eyebrow">YOUR LINEUP</div><h2>TVÁ AKTIVNÍ SESTAVA</h2></div><button class="btn" onclick="showPage('roster')">UPRAVIT</button></div>
+<div id="homeRoster" class="small">Zatím nemáš vložené hráče.</div>
+</div>
 </section>
 
-<!-- MATCHUP -->
 <section class="page" id="page-matchup">
- <div class="heading"><div><div class="eyebrow">HEAD TO HEAD / WEEKLY BATTLE</div><h1>MŮJ MATCHUP</h1></div><span class="pill">11 CATEGORIES</span></div>
- <div class="panel">
-  <div class="matchteams">
-   <div><div class="eyebrow">YOUR TEAM</div><strong id="matchMyName">MALATOVO STARS</strong></div>
-   <div class="vs">VS</div>
-   <div><div class="eyebrow">OPPONENT</div><strong id="matchOppName">OPPONENT</strong></div>
-  </div>
-  <div class="score" style="text-align:center" id="matchScore">— : —</div>
-  <div class="small" style="text-align:center">Kategorie vyhrané / remízy / prohry</div>
- </div>
- <div class="panel" style="margin-top:14px">
-  <div class="heading"><h2>KATEGORIE</h2><button class="btn" onclick="openOpponentStats()">ZADAT STATISTIKY SOUPEŘE</button></div>
-  <div id="categoryRows"></div>
- </div>
- <div class="panel" style="margin-top:14px">
-  <div class="eyebrow">YOUR WEEKLY TOTALS</div><h2>STATISTIKY TVÉHO TÝMU</h2>
-  <div id="myTotals" class="small">Přidej hráče a zadej jejich statistiky.</div>
- </div>
+<div class="heading"><div><div class="eyebrow">HEAD TO HEAD / WEEKLY BATTLE</div><h1>MŮJ MATCHUP</h1></div><span class="pill">11 CATEGORIES</span></div>
+<div class="panel">
+<div class="matchteams"><div><div class="eyebrow">YOUR TEAM</div><strong id="matchMyName">MALATOVO STARS</strong></div><div class="vs">VS</div><div><div class="eyebrow">OPPONENT</div><strong id="matchOppName">OPPONENT</strong></div></div>
+<div class="score" style="text-align:center" id="matchScore">— : —</div>
+<div class="small" style="text-align:center">Výhry : prohry : remízy</div>
+</div>
+<div class="panel" style="margin-top:14px">
+<div class="heading"><h2>KATEGORIE</h2><button class="btn" onclick="openOpponentStats()">ZADAT STATISTIKY SOUPEŘE</button></div>
+<div id="categoryRows"></div>
+</div>
+<div class="panel" style="margin-top:14px"><div class="eyebrow">YOUR WEEKLY TOTALS</div><h2>STATISTIKY TVÉHO TÝMU</h2><div id="myTotals" class="small"></div></div>
 </section>
 
-<!-- LEAGUE -->
 <section class="page" id="page-league">
- <div class="heading"><div><div class="eyebrow">14 FRANCHISES / 7 BATTLES</div><h1>CELÁ LIGA</h1></div><button class="btn" onclick="editLeague()">UPRAVIT TÝMY</button></div>
- <div class="panel">
-  <div class="eyebrow">WEEKLY MATCHUPS</div><h2>VŠECHNY DUELY TÝDNE</h2>
-  <div id="leagueDuels"></div>
-  <div class="small" style="margin-top:12px">Výsledky ostatních duelů můžeš zadat ručně. Živé Yahoo výsledky zatím nejsou připojené.</div>
- </div>
- <div class="panel" style="margin-top:14px">
-  <div class="eyebrow">LEAGUE TABLE</div><h2>POŘADÍ TÝMŮ</h2>
-  <div class="tablewrap"><table><thead><tr><th>#</th><th>TÝM</th><th>VÝHRY</th><th>PROHRY</th><th>REMÍZY</th></tr></thead><tbody id="leagueTable"></tbody></table></div>
- </div>
+<div class="heading"><div><div class="eyebrow">14 FRANCHISES / 7 BATTLES</div><h1>CELÁ LIGA</h1></div><button class="btn" onclick="editLeague()">UPRAVIT TÝMY</button></div>
+<div class="panel"><div class="eyebrow">WEEKLY MATCHUPS</div><h2>VŠECHNY DUELY TÝDNE</h2><div id="leagueDuels"></div><div class="small" style="margin-top:12px">Rozpis je zatím ručně upravitelný. Živá Yahoo data nejsou připojená.</div></div>
+<div class="panel" style="margin-top:14px"><div class="eyebrow">LEAGUE TABLE</div><h2>POŘADÍ TÝMŮ</h2><div class="tablewrap"><table><thead><tr><th>#</th><th>TÝM</th><th>VÝHRY</th><th>PROHRY</th><th>REMÍZY</th></tr></thead><tbody id="leagueTable"></tbody></table></div></div>
 </section>
 
-<!-- ROSTER -->
 <section class="page" id="page-roster">
- <div class="heading"><div><div class="eyebrow">DAILY LINEUP / TODAY</div><h1>MOJE SESTAVA</h1></div><button class="btn" onclick="openPlayer()">+ PŘIDAT HRÁČE</button></div>
- <div class="panel">
-  <div class="heading"><div><div class="eyebrow">LINEUP MANAGEMENT</div><h2>AKTIVNÍ SESTAVA A LAVIČKA</h2></div><span class="pill" id="rosterCapacity">0 / 22</span></div>
-  <div id="rosterSlots"></div>
- </div>
- <div class="panel" style="margin-top:14px">
-  <div class="eyebrow">DAILY LINEUP</div><h2>INFORMACE</h2>
-  <p class="small">Sestavu můžeš upravovat každý den. Přesun hráče mezi pozicemi nemění počet waiver adds. Počítadlo se srovnává každé pondělí.</p>
- </div>
+<div class="heading"><div><div class="eyebrow">DAILY LINEUP / TODAY</div><h1>MOJE SESTAVA</h1></div><button class="btn" onclick="openPlayer()">+ PŘIDAT HRÁČE</button></div>
+<div class="panel"><div class="heading"><div><div class="eyebrow">LINEUP MANAGEMENT</div><h2>AKTIVNÍ SESTAVA A LAVIČKA</h2></div><span class="pill" id="rosterCapacity">0 / 22</span></div><div id="rosterSlots"></div></div>
+<div class="panel" style="margin-top:14px"><div class="eyebrow">DAILY LINEUP</div><h2>INFORMACE</h2><p class="small">Sestavu můžeš upravovat každý den. Přesun hráče mezi pozicemi nespotřebuje waiver add.</p></div>
 </section>
 
-<!-- PLAYERS -->
 <section class="page" id="page-players">
- <div class="heading"><div><div class="eyebrow">PLAYER DATABASE</div><h1>HRÁČI</h1></div><button class="btn" onclick="openPlayer()">+ NOVÝ HRÁČ</button></div>
- <div class="panel">
-  <input id="playerSearch" placeholder="Hledat hráče..." oninput="renderPlayers()">
-  <div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>HRÁČ</th><th>POZICE</th><th>NHL TÝM</th><th>GP</th><th>G</th><th>A</th><th>PPP</th><th>+/−</th><th>SOG</th><th>HIT</th><th>BLK</th><th></th></tr></thead><tbody id="playersTable"></tbody></table></div>
- </div>
+<div class="heading"><div><div class="eyebrow">PLAYER DATABASE</div><h1>HRÁČI</h1></div><button class="btn" onclick="openPlayer()">+ NOVÝ HRÁČ</button></div>
+<div class="panel"><input id="playerSearch" placeholder="Hledat hráče..." oninput="renderPlayers()"><div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>HRÁČ</th><th>POZICE</th><th>NHL TÝM</th><th>GP</th><th>G</th><th>A</th><th>PPP</th><th>+/−</th><th>SOG</th><th>HIT</th><th>BLK</th><th></th></tr></thead><tbody id="playersTable"></tbody></table></div></div>
 </section>
 
-<!-- WAIVERS -->
 <section class="page" id="page-waivers">
- <div class="heading"><div><div class="eyebrow">ROSTER MOVES</div><h1>WAIVERS & ADDS</h1></div><span class="pill">MONDAY RESET</span></div>
- <div class="grid grid2">
-  <div class="panel">
-   <div class="eyebrow">WEEKLY ADD LIMIT</div>
-   <div class="addcount" id="waiverCount">4 / 4</div>
-   <div class="progress"><span id="waiverProgress" style="width:100%"></span></div>
-   <p class="small">Zbývající přidání hráčů v tomto fantasy týdnu.</p>
-   <div class="small" id="waiverReset"></div>
-  </div>
-  <div class="panel">
-   <div class="eyebrow">ADD PLAYER</div><h2>PŘIDAT Z FREE AGENTS</h2>
-   <label>Hráč</label><select id="waiverPlayer"></select>
-   <button class="btn green" style="width:100%;margin-top:12px" onclick="waiverAdd()">+ PŘIDAT HRÁČE</button>
-   <p class="small">Přidání spotřebuje jeden ze čtyř týdenních addů.</p>
-  </div>
- </div>
- <div class="panel" style="margin-top:14px">
-  <div class="eyebrow">TRANSACTION LOG</div><h2>HISTORIE POHYBŮ</h2>
-  <div id="transactions" class="small">Zatím žádné pohyby.</div>
- </div>
+<div class="heading"><div><div class="eyebrow">ROSTER MOVES</div><h1>WAIVERS & ADDS</h1></div><span class="pill">MONDAY RESET</span></div>
+<div class="grid grid2">
+<div class="panel"><div class="eyebrow">WEEKLY ADD LIMIT</div><div class="addcount" id="waiverCount">4 / 4</div><div class="progress"><span id="waiverProgress" style="width:100%"></span></div><p class="small">Zbývající přidání hráčů v tomto fantasy týdnu.</p><div class="small" id="waiverReset"></div></div>
+<div class="panel"><div class="eyebrow">ADD PLAYER</div><h2>PŘIDAT Z FREE AGENTS</h2><label>Hráč</label><select id="waiverPlayer"></select><button class="btn green" style="width:100%;margin-top:12px" onclick="waiverAdd()">+ PŘIDAT HRÁČE</button><p class="small">Přidání spotřebuje jeden ze čtyř týdenních addů.</p></div>
+</div>
+<div class="panel" style="margin-top:14px"><div class="eyebrow">TRANSACTION LOG</div><h2>HISTORIE POHYBŮ</h2><div id="transactions" class="small"></div></div>
 </section>
 
-<!-- SETTINGS -->
 <section class="page" id="page-settings">
- <div class="heading"><div><div class="eyebrow">SYSTEM CONFIGURATION</div><h1>NASTAVENÍ</h1></div></div>
- <div class="panel">
-  <h2>TVŮJ TÝM A SOUPEŘ</h2>
-  <label>Název tvého týmu</label><input id="settingTeam">
-  <label>Aktuální soupeř</label><input id="settingOpponent">
-  <button class="btn" style="margin-top:12px" onclick="saveTeamSettings()">ULOŽIT</button>
- </div>
- <div class="panel" styl
+<div class="heading"><div><div class="eyebrow">SYSTEM CONFIGURATION</div><h1>NASTAVENÍ</h1></div></div>
+<div class="panel"><h2>TVŮJ TÝM A SOUPEŘ</h2><label>Název tvého týmu</label><input id="settingTeam"><label>Aktuální soupeř</label><input id="settingOpponent"><button class="btn" style="margin-top:12px" onclick="saveTeamSettings()">ULOŽIT</button></div>
+<div class="panel" style="margin-top:14px"><h2>YAHOO LIGA – PRAVIDLA</h2><div class="statline"><div class="statbox"><strong>14</strong><span>TÝMŮ</span></div><div class="statbox"><strong>14</strong><span>AKTIVNÍCH SLOTŮ</span></div><div class="statbox"><strong>4</strong><span>ADDS / TÝDEN</span></div><div class="statbox"><strong>3</strong><span>MIN. G STARTS</span></div></div><p class="small">Daily – Today / nový fantasy týden v pondělí.</p></div>
+<div class="panel" style="margin-top:14px"><h2>ZÁLOHA DAT</h2><div class="actions"><button class="btn" onclick="exportData()">EXPORT JSON</button><button class="btn" onclick="document.getElementById('importFile').click()">IMPORT JSON</button><input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)"></div></div>
+<div class="panel" style="margin-top:14px"><h2>VYMAZAT DATA</h2><button class="btn red" onclick="resetData()">VYMAZAT VŠECHNA DATA</button></div>
+</section>
+
+<div class="footer">BANGER FANTASY NHL 2100 · BUILT FOR THE ICE</div>
+</main>
+</div>
+<nav class="mobile-nav">
+<button onclick="showPage('home')"><b>◈</b>ARÉNA</button>
+<button onclick="showPage('matchup')"><b>⚔</b>MATCHUP</button>
+<button onclick="showPage('roster')"><b>🏒</b>SESTAVA</button>
+<button onclick="showPage('league')"><b>🏆</b>LIGA</button>
+<button onclick="showPage('waivers')"><b>⇅</b>WAIVERS</button>
+</nav>
+</div>
+
+<div id="playerModal" class="modal"><div class="modalbox">
+<div class="modalhead"><h2 id="playerModalTitle">NOVÝ HRÁČ</h2><button class="close" onclick="closeModal('playerModal')">×</button></div>
+<input type="hidden" id="pId">
+<div class="formgrid">
+<div style="grid-column:span 2"><label>Jméno hráče</label><input id="pName" placeholder="Např. Jason Robertson"></div>
+<div><label>Pozice</label><select id="pPos"><option>C</option><option>LW</option><option>RW</option><option>D</option><option>G</option></select></div>
+<div><label>NHL tým</label><input id="pTeam" placeholder="DAL"></div><div><label>Zařazení</label><select id="pSlot"></select></div>
+<div><label>GP</label><input id="pGP" type="number" value="0"></div><div><label>G</label><input id="pG" type="number" value="0"></div><div><label>A</label><input id="pA" type="number" value="0"></div>
+<div><label>PPP</label><input id="pPPP" type="number" value="0"></div><div><label>+/−</label><input id="pPM" type="number" value="0"></div><div><label>SOG</label><input id="pSOG" type="number" value="0"></div>
+<div><label>HIT</label><input id="pHIT" type="number" value="0"></div><div><label>BLK</label><input id="pBLK" type="number" value="0"></div><div><label>W</label><input id="pW" type="number" value="0"></div>
+<div><label>SO</label><input id="pSO" type="number" value="0"></div><div><label>GA</label><input id="pGA" type="number" value="0"></div><div><label>Minuty v bráně</label><input id="pMin" type="number" value="0"></div>
+<div><label>Zákroky</label><input id="pSaves" type="number" value="0"></div><div><label>Střely proti</label><input id="pSA" type="number" value="0"></div>
+</div>
+<div class="actions" style="margin-top:18px"><button class="btn green" onclick="savePlayer()">ULOŽIT HRÁČE</button><button class="btn ghost" onclick="closeModal('playerModal')">ZRUŠIT</button></div>
+</div></div>
+
+<div id="opponentModal" class="modal"><div class="modalbox">
+<div class="modalhead"><h2>STATISTIKY SOUPEŘE</h2><button class="close" onclick="closeModal('opponentModal')">×</button></div>
+<p class="small">Zadej průběžné týdenní statistiky soupeře. SV% zadávej jako desetinné číslo, například 0.915.</p>
+<div class="formgrid" id="opponentInputs"></div>
+<button class="btn green" style="margin-top:15px" onclick="saveOpponentStats()">ULOŽIT STATISTIKY</button>
+</div></div>
+
+<div id="leagueModal" class="modal"><div class="modalbox">
+<div class="modalhead"><h2>UPRAVIT LIGU</h2><button class="close" onclick="closeModal('leagueModal')">×</button></div>
+<div id="leagueEditInputs"></div><button class="btn green" style="margin-top:15px" onclick="saveLeague()">ULOŽIT TÝMY</button>
+</div></div>
+<div id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const slots=[["C",2],["LW",2],["RW",2],["D",4],["UTIL",2],["G",2],["BN",4],["IR",3],["IR+",1]];
+const cats=["G","A","PPP","+/-","SOG","HIT","BLK","W","GAA","SV%","SO"];
+const defaults={
+team:"MALATOVO STARS",opponent:"OPPONENT",players:[],adds:0,weekKey:"",
+transactions:[],opponentStats:{G:0,A:0,PPP:0,"+/-":0,SOG:0,HIT:0,BLK:0,W:0,GAA:0,"SV%":0,SO:0},
+league:["MALATOVO STARS","TEAM 02","TEAM 03","TEAM 04","TEAM 05","TEAM 06","TEAM 07","TEAM 08","TEAM 09","TEAM 10","TEAM 11","TEAM 12","TEAM 13","TEAM 14"]
+};
+function cloneDefaults(){return JSON.parse(JSON.stringify(defaults))}
+function loadData(){
+try{
+const saved=localStorage.getItem("banger2100");
+if(!saved)return cloneDefaults();
+const parsed=JSON.parse(saved);
+return Object.assign(cloneDefaults(),parsed);
+}catch(e){console.warn("Data load issue:",e);return cloneDefaults()}
+}
+let data=loadData();
+
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2300)}
+function save(){
+try{localStorage.setItem("banger2100",JSON.stringify(data))}
+catch(e){console.warn("Save issue:",e);toast("Nepodařilo se uložit data.")}
+renderAll()
+}
+function mondayKey(){
+const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));
+return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()
+}
+function checkWeek(){
+const k=mondayKey();
+if(data.weekKey!==k){data.weekKey=k;data.adds=0;data.transactions=[]}
+}
+function showPage(name){
+document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+const page=$("page-"+name);if(page)page.classList.add("active");
+document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===name));
+try{renderAll()}catch(e){console.error(e)}
+window.scrollTo(0,0)
+}
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+
+function playerSlot(p){return p.slot||"BN"}
+function slotCount(s,except){return data.players.filter(p=>p.id!==except&&playerSlot(p)===s).length}
+function playerAllowed(p,s){
+if(s==="UTIL")return p.pos!=="G";
+if(["C","LW","RW","D","G"].includes(s))return p.pos===s;
+return ["BN","IR","IR+"].includes(s)
+}
+function chooseSlot(pos){
+const preferred=pos==="G"?["G","BN"]:pos==="D"?["D","UTIL","BN"]:[pos,"UTIL","BN"];
+for(const s of preferred){const n=slots.find(x=>x[0]===s)?.[1]||0;if(slotCount(s)<n)return s}
+return "BN"
+}
+function addPlayerSlotOptions(selected){
+$("pSlot").innerHTML=slots.map(([s,n])=>`<option value="${s}">${s} (${slotCount(s)} / ${n})</option>`).join("");
+$("pSlot").value=selected||"BN"
+}
+function openPlayer(id){
+const p=data.players.find(x=>x.id===id);
+$("playerModalTitle").textContent=p?"UPRAVIT HRÁČE":"NOVÝ HRÁČ";
+$("pId").value=p?.id||"";
+$("pName").value=p?.name||"";$("pPos").value=p?.pos||"C";$("pTeam").value=p?.team||"";
+const fields={GP:"gp",G:"g",A:"a",PPP:"ppp",PM:"pm",SOG:"sog",HIT:"hit",BLK:"blk",W:"w",SO:"so",GA:"ga",Min:"min",Saves:"saves",SA:"sa"};
+Object.entries(fields).forEach(([a,b])=>$("p"+a).value=p?.[b]??0);
+addPlayerSlotOptions(p?.slot||chooseSlot(p?.pos||"C"));
+$("playerModal").classList.add("open")
+}
+function closeModal(id){$(id).classList.remove("open")}
+function savePlayer(){
+const name=$("pName").value.trim();if(!name){toast("Zadej jméno hráče.");return}
+const id=$("pId").value||("p"+Date.now()),pos=$("pPos").value,slot=$("pSlot").value;
+const limit=slots.find(x=>x[0]===slot)[1];
+if(!playerAllowed({pos},slot)){toast("Tento hráč nemůže na vybranou pozici.");return}
+if(slotCount(slot,id)>=limit){toast("Tato pozice je plná.");return}
+const v={id,name,pos,team:$("pTeam").value.toUpperCase(),slot};
+const fields={GP:"gp",G:"g",A:"a",PPP:"ppp",PM:"pm",SOG:"sog",HIT:"hit",BLK:"blk",W:"w",SO:"so",GA:"ga",Min:"min",Saves:"saves",SA:"sa"};
+Object.entries(fields).forEach(([a,b])=>v[b]=Number($("p"+a).value)||0);
+const i=data.players.findIndex(x=>x.id===id);if(i>=0)data.players[i]=v;else data.players.push(v);
+closeModal("playerModal");save();toast("Hráč uložen.")
+}
+function movePlayer(id,slot){
+const p=data.players.find(x=>x.id===id);if(!p)return;
+if(!playerAllowed(p,slot)){toast("Na tuto pozici hráč nemůže.");return}
+if(slotCount(slot,id)>=(slots.find(x=>x[0]===slot)?.[1]||0)){toast("Pozice je obsazená.");return}
+p.slot=slot;save();toast("Pozice změněna.")
+}
+function deletePlayer(id){
+if(!confirm("Opravdu odebrat hráče?"))return;
+data.players=data.players.filter(p=>p.id!==id);save();toast("Hráč odebrán.")
+}
+function renderRoster(){
+let html="";
+slots.forEach(([s,n])=>{
+html+=`<div class="slotgroup"><div class="slot-title">${s} · ${slotCount(s)} / ${n}</div>`;
+for(let i=0;i<n;i++){
+const p=data.players.filter(x=>playerSlot(x)===s)[i];
+if(p){
+html+=`<div class="slot"><div><b>${esc(p.name)}</b> <span class="pill">${esc(p.pos)} · ${esc(p.team||"—")}</span></div><div class="actions"><select style="width:75px;padding:5px" onchange="movePlayer('${p.id}',this.value)">${slots.map(([x])=>`<option ${x===s?"selected":""}>${x}</option>`).join("")}</select><button class="btn" onclick="openPlayer('${p.id}')">EDIT</button><button class="btn red" onclick="deletePlayer('${p.id}')">×</button></div></div>`
+}else html+=`<div class="slot empty">VOLNÉ MÍSTO · ${s}</div>`
+}
+html+="</div>"
+});
+$("rosterSlots").innerHTML=html;
+$("rosterCount").textContent=data.players.length+"/22";$("rosterCapacity").textContent=data.players.length+"/22";
+const active=data.players.filter(p=>!["BN","IR","IR+"].includes(playerSlot(p)));
+$("homeRoster").innerHTML=active.length?active.map(p=>`<div class="duel"><span class="team">${esc(p.name)}</span><span>${p.pos}</span><span class="team">${esc(p.team||"—")}</span></div>`).join(""):"Zatím nemáš aktivní hráče."
+}
+function renderPlayers(){
+const q=($("playerSearch")?.value||"").toLowerCase();
+const ps=data.players.filter(p=>(p.name+" "+p.team+" "+p.pos).toLowerCase().includes(q));
+$("playersTable").innerHTML=ps.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${p.pos}</td><td>${esc(p.team||"—")}</td><td>${p.gp||0}</td><td>${p.g||0}</td><td>${p.a||0}</td><td>${p.ppp||0}</td><td>${p.pm||0}</td><td>${p.sog||0}</td><td>${p.hit||0}</td><td>${p.blk||0}</td><td><button class="btn" onclick="openPlayer('${p.id}')">EDIT</button></td></tr>`).join("")||'<tr><td colspan="12">Žádní hráči. Přidej prvního hráče.</td></tr>'
+}
+function totals(){
+const ps=data.players.filter(p=>!["BN","IR","IR+"].includes(playerSlot(p)));
+const sum=k=>ps.reduce((a,p)=>a+(Number(p[k])||0),0);
+const goalies=ps.filter(p=>p.pos==="G");
+const ga=goalies.reduce((a,p)=>a+(p.ga||0),0),min=goalies.reduce((a,p)=>a+(p.min||0),0);
+const saves=goalies.reduce((a,p)=>a+(p.saves||0),0),sa=goalies.reduce((a,p)=>a+(p.sa||0),0);
+return {G:sum("g"),A:sum("a"),PPP:sum("ppp"),"+/-":sum("pm"),SOG:sum("sog"),HIT:sum("hit"),BLK:sum("blk"),W:sum("w"),SO:sum("so"),GAA:min?ga*60/min:0,"SV%":sa?saves/sa:0}
+}
+function categoryCompare(){
+const t=totals(),o=data.opponentStats;
+return cats.map(c=>{
+const a=Number(t[c])||0,b=Number(o[c])||0;
+let result=(c==="GAA")?(a<b?"W":a>b?"L":"T"):(a>b?"W":a<b?"L":"T");
+if((c==="GAA"||c==="SV%")&&a===0&&b===0)result="T";
+return {c,a,b,result}
+})
+}
+function fmt(c,v){if(c==="SV%")return (v*100).toFixed(1)+"%";if(c==="GAA")return Number(v).toFixed(2);return String(Number(v)||0)}
+function renderMatchup(){
+const rows=categoryCompare();let w=0,l=0,t=0;
+rows.forEach(x=>{if(x.result==="W")w++;else if(x.result==="L")l++;else t++});
+const score=`${w} : ${l} : ${t}`;
+$("matchScore").textContent=score;$("homeScore").textContent=score;
+$("categoryRows").innerHTML=rows.map(x=>`<div class="catrow"><div class="catname">${x.c}</div><div class="catval">${fmt(x.c,x.a)} <span class="muted">vs</span> ${fmt(x.c,x.b)}</div><div class="catval ${x.result==="W"?"winner":x.result==="L"?"loser":""}">${x.result}</div></div>`).join("");
+$("myTotals").innerHTML=rows.map(x=>`${x.c}: <b>${fmt(x.c,x.a)}</b>`).join(" · ")
+}
+function openOpponentStats(){
+$("opponentInputs").innerHTML=cats.map(c=>`<div><label>${c}${c==="SV%"?" (např. 0.915)":""}</label><input id="o_${c.replace(/[^a-zA-Z]/g,"x")}" type="number" step="${c==="GAA"||c==="SV%"?".001":"1"}" value="${data.opponentStats[c]||0}"></div>`).join("");
+$("opponentModal").classList.add("open")
+}
+function saveOpponentStats(){
+cats.forEach(c=>data.opponentStats[c]=Number($("o_"+c.replace(/[^a-zA-Z]/g,"x")).value)||0);
+closeModal("opponentModal");save();toast("Statistiky soupeře uloženy.")
+}
+function editLeague(){
+$("leagueEditInputs").innerHTML=data.league.map((n,i)=>`<label>Tým ${i+1}</label><input id="league_${i}" value="${esc(n)}">`).join("");
+$("leagueModal").classList.add("open")
+}
+function saveLeague(){
+data.league=data.league.map((n,i)=>$("league_"+i).value.trim()||n);
+closeModal("leagueModal");save();toast("Liga uložena.")
+}
+function renderLeague(){
+const teams=data.league,pairs=[];
+for(let i=0;i<14;i+=2)pairs.push([teams[i],teams[i+1]]);
+const my=pairs.findIndex(p=>p.includes(data.team));
+if(my>0)pairs.unshift(pairs.splice(my,1)[0]);
+$("leagueDuels").innerHTML=pairs.map((p,i)=>`<div class="duel ${i===0?"you":""}"><span class="team">${esc(p[0])}</span><span>VS</span><span class="team">${esc(p[1])}</span></div>`).join("");
+$("homeDuels").innerHTML=pairs.slice(1,4).map(p=>`<div class="duel"><span class="team">${esc(p[0])}</span><span>VS</span><span class="team">${esc(p[1])}</span></div>`).join("");
+$("leagueTable").innerHTML=teams.map((t,i)=>`<tr><td>${i+1}</td><td>${esc(t)}</td><td>—</td><td>—</td><td>—</td></tr>`).join("")
+}
+function renderTeam(){
+$("arenaMyTeam").textContent=data.team;$("homeTeamName").textContent=data.team;
+$("matchMyName").textContent=data.team;$("arenaOpponent").textContent=data.opponent;
+$("homeOppName").textContent=data.opponent;$("matchOppName").textContent=data.opponent
+}
+function renderWaivers(){
+const remaining=Math.max(0,4-data.adds),pct=remaining/4*100;
+["sideAdds","homeAdds"].forEach(id=>$(id).textContent=remaining+"/4");
+$("waiverCount").textContent=remaining+" / 4";
+["sideProgress","waiverProgress"].forEach(id=>$(id).style.width=pct+"%");
+$("waiverReset").textContent="Nový limit se obnoví v pondělí.";
+const free=data.players.filter(p=>playerSlot(p)==="BN");
+$("waiverPlayer").innerHTML=free.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("")||'<option value="">Lavička je prázdná</option>';
+$("transactions").innerHTML=data.transactions.length?data.transactions.map(t=>`<div class="duel"><span>${esc(t.name)}</span><span>${esc(t.action)}</span><span>${esc(t.date)}</span></div>`).join(""):"Zatím žádné pohyby."
+}
+function waiverAdd(){
+if(data.adds>=4){toast("Týdenní limit 4 adds je vyčerpán.");return}
+const id=$("waiverPlayer").value,p=data.players.find(x=>x.id===id);
+if(!p){toast("Vyber hráče.");return}
+data.adds++;data.transactions.unshift({name:p.name,action:"ADD",date:new Date().toLocaleDateString("cs-CZ")});
+save();toast("Add zaznamenán. Zbývají "+(4-data.adds)+".")
+}
+function saveTeamSettings(){
+data.team=$("settingTeam").value.trim()||data.team;
+data.opponent=$("settingOpponent").value.trim()||data.opponent;
+save();toast("Nastavení uloženo.")
+}
+function exportData(){
+const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="banger-fantasy-backup.json";a.click();URL.revokeObjectURL(a.href)
+}
+function importData(e){
+const f=e.target.files[0];if(!f)return;
+const r=new FileReader();
+r.onload=()=>{try{data=Object.assign(cloneDefaults(),JSON.parse(r.result));save();toast("Záloha obnovena.")}catch(err){toast("Soubor se nepodařilo načíst.")}};
+r.readAsText(f)
+}
+function resetData(){
+if(!confirm("Opravdu vymazat všechna data?"))return;
+try{localStorage.removeItem("banger2100")}catch(e){}
+data=cloneDefaults();save();toast("Data vymazána.")
+}
+function renderAll(){
+renderTeam();renderRoster();renderPlayers();renderMatchup();renderLeague();renderWaivers();
+$("settingTeam").value=data.team;$("settingOpponent").value=data.opponent;
+$("weekLabel").textContent="WEEK OF "+new Date().toLocaleDateString("cs-CZ")
+}
+function clock(){$("clock").textContent=new Date().toLocaleTimeString("cs-CZ",{hour:"2-digit",minute:"2-digit"})}
+window.showPage=showPage;window.openPlayer=openPlayer;window.closeModal=closeModal;
+window.savePlayer=savePlayer;window.movePlayer=movePlayer;window.deletePlayer=deletePlayer;
+window.renderPlayers=renderPlayers;window.openOpponentStats=openOpponentStats;
+window.saveOpponentStats=saveOpponentStats;window.editLeague=editLeague;window.saveLeague=saveLeague;
+window.waiverAdd=waiverAdd;window.saveTeamSettings=saveTeamSettings;
+window.exportData=exportData;window.importData=importData;window.resetData=resetData;
+
+function startApp(){
+const intro=$("intro"),app=$("app");
+let revealed=false;
+function reveal(){
+if(revealed)return;revealed=true;
+intro.style.opacity="0";intro.style.transition="opacity .45s";
+setTimeout(()=>{intro.style.display="none";app.style.display="block"},450)
+}
+// Zobrazení aplikace je nezávislé na načtení dat a renderování.
+setTimeout(reveal,3000);
+try{
+checkWeek();
+renderAll();
+clock();
+setInterval(clock,30000);
+}catch(err){
+console.error("BANGER START ERROR",err);
+app.style.display="block";
+const main=document.querySelector("main");
+if(main)main.insertAdjacentHTML("afterbegin",
+'<div class="panel" style="border-color:#ff355d;margin-bottom:15px"><b style="color:#ff7890">CHYBA PŘI NAČÍTÁNÍ DAT</b><p class="small">Aplikace se spustila, ale část dat se nepodařilo vykreslit. Zkus obnovit stránku nebo exportovat zálohu.</p><pre style="white-space:pre-wrap;color:#ff9bad;font-size:11px"></pre></div>');
+const pre=main?.querySelector("pre");if(pre)pre.textContent=String(err.message||err);
+}
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",startApp);
+else startApp();
+})();
+</script>
+</body>
+</html>
