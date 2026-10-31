@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -92,9 +93,54 @@ footer{text-align:center;padding:20px;color:#63758d;font-size:11px}
 @media(max-width:480px){header{padding:13px}.logo{font-size:21px}
  .grid{gap:8px}.panel{padding:12px}.stat{font-size:23px}
  main{padding-left:10px;padding-right:10px}.hero{padding:17px}}
+
+/* BANGER HOLOGRAPHIC EXPERIENCE */
+:root{--cyan:#50f4ef;--blue:#42aaff;--purple:#a66bff}
+body{background:radial-gradient(ellipse at 50% -15%,#183b59 0%,#091426 42%,#040812 100%);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 3px,#8beaff05 4px),radial-gradient(circle at 15% 30%,#36e0df12,transparent 32%),radial-gradient(circle at 85% 65%,#9c63ff12,transparent 30%)}
+header{background:#050a16ef;border-bottom:1px solid #45dff055;box-shadow:0 8px 35px #0008}
+.logo{text-shadow:0 0 12px #50f4ef88,0 0 28px #42aaff55}
+.logo span{color:var(--cyan);text-shadow:0 0 15px #50f4ef}
+.panel,.hero{background:linear-gradient(145deg,#12253bdb,#081323f2 65%,#101b33e8);border-color:#4de6ed45;box-shadow:inset 0 1px #ffffff0d,0 0 22px #1bcbd10b,0 12px 30px #0004;backdrop-filter:blur(12px)}
+.panel{position:relative;overflow:hidden}
+.panel:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#9afaff08 48%,transparent 70%);transform:translateX(-100%);animation:holoSweep 9s ease-in-out infinite}
+.hero{box-shadow:inset 0 0 30px #36e0df0b,0 0 30px #31d9e51a}
+.btn,button{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.btn:hover,button:hover{box-shadow:0 0 16px #43dfe866;transform:translateY(-1px)}
+input,select{background:#071426!important;color:#effaff!important;border:1px solid #34728b!important}
+.slot{position:relative;display:grid;grid-template-columns:54px minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px;margin:7px 0;border:1px solid #2c526a;border-radius:12px;background:linear-gradient(100deg,#0c1b2c,#101e34);box-shadow:inset 0 1px #ffffff09;transition:.2s}
+.slot:last-child{border:1px solid #2c526a}
+.slot.dragging{opacity:.45;transform:scale(.985)}
+.slot.drop-target{border-color:var(--cyan);box-shadow:0 0 18px #50f4ef66,inset 0 0 18px #50f4ef18}
+.slot-name{font-weight:800;font-size:13px;color:#f2fbff}
+.slot-team{font-size:10px;color:#9db4cb;margin-top:3px}
+.pos{color:var(--cyan);font-size:11px;font-weight:1000;letter-spacing:1px;text-shadow:0 0 10px #50f4ef88}
+.slot-actions{display:flex;gap:6px;align-items:center}
+.slot select{max-width:132px;padding:7px;border-radius:8px;font-size:11px}
+.slot .btn{padding:7px 10px}
+.slot-meta{font-size:9px;color:#8db4c9;text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+#loadingScreen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:radial-gradient(ellipse at center,#142d49 0%,#07101f 48%,#02050c 100%);opacity:1;visibility:visible;transition:opacity .7s ease,visibility .7s ease}
+#loadingScreen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-core{width:min(88vw,390px);text-align:center;padding:32px 24px;border:1px solid #50f4ef66;border-radius:24px;background:linear-gradient(145deg,#102b43cc,#060d1bdd);box-shadow:0 0 24px #50f4ef33,inset 0 0 35px #42aaff12;position:relative;overflow:hidden}
+.loader-core:before{content:"";position:absolute;inset:-60%;background:conic-gradient(from 0deg,transparent,#50f4ef22,transparent,#a66bff22,transparent);animation:loaderSpin 8s linear infinite}
+.loader-core>*{position:relative}
+.loader-emblem{width:112px;height:112px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;border:2px solid #50f4efaa;box-shadow:0 0 18px #50f4ef66,inset 0 0 20px #50f4ef33;animation:emblemPulse 2s ease-in-out infinite;position:relative}
+.loader-emblem:before,.loader-emblem:after{content:"";position:absolute;width:130px;height:130px;border:1px solid #a66bff88;border-radius:50%;animation:loaderSpin 5s linear infinite}
+.loader-emblem:after{width:148px;height:148px;border-color:#42aaff66;animation-direction:reverse;animation-duration:8s}
+.loader-puck{width:62px;height:62px;border-radius:50%;display:grid;place-items:center;font-size:34px;font-weight:1000;color:#06121c;background:linear-gradient(145deg,#a4ffff,#35b8ed 55%,#a66bff);box-shadow:0 0 28px #50f4efaa,inset 0 2px #fff}
+.loader-title{font-size:30px;font-weight:1000;letter-spacing:5px;color:#f1ffff;text-shadow:0 0 16px #50f4efaa}
+.loader-sub{font-size:9px;letter-spacing:2.5px;color:#8dbed0;margin-top:8px}
+.loader-track{height:4px;background:#1a3448;border-radius:9px;margin:24px 0 13px;overflow:hidden}
+.loader-track i{display:block;width:35%;height:100%;border-radius:9px;background:linear-gradient(90deg,#42aaff,#50f4ef,#b78aff);box-shadow:0 0 12px #50f4ef;animation:loaderProgress 1.5s ease-in-out infinite}
+@keyframes loaderSpin{to{transform:rotate(360deg)}}
+@keyframes loaderProgress{0%{transform:translateX(-120%)}100%{transform:translateX(360%)}}
+@keyframes emblemPulse{50%{box-shadow:0 0 32px #50f4efaa,inset 0 0 28px #50f4ef66}}
+@keyframes holoSweep{0%,72%,100%{transform:translateX(-100%)}88%{transform:translateX(100%)}}
+@media(max-width:520px){.slot{grid-template-columns:42px minmax(0,1fr)}.slot-actions{grid-column:2;justify-content:flex-start;flex-wrap:wrap}.slot select{max-width:150px}}
 </style>
 </head>
 <body>
+<div id="loadingScreen" aria-label="BANGER se načítá"><div class="loader-core"><div class="loader-emblem"><div class="loader-puck">B</div></div><div class="loader-title">BANGER 2.0</div><div class="loader-sub">FANTASY NHL COMMAND CENTER</div><div class="loader-track"><i></i></div><div class="loader-sub">NAČÍTÁM HOKEJOVÝ VESMÍR</div></div></div>
 <header>
  <div class="top">
   <div><div class="logo">BANGER<span> 2.0</span></div>
@@ -127,7 +173,7 @@ footer{text-align:center;padding:20px;color:#63758d;font-size:11px}
   <div class="panel"><div class="stat-label">Počet týmů</div><div class="stat">14</div><div class="small">Yahoo H2H liga</div></div>
   <div class="panel"><div class="stat-label">Kategorie</div><div class="stat">11</div><div class="small">7 hráči v poli · 4 brankáři</div></div>
   <div class="panel"><div class="stat-label">Waiver adds</div><div class="stat" id="addsRemaining">4</div><div class="small">týdenní limit</div></div>
-  <div class="panel"><div class="stat-label">Aktivní hráči</div><div class="stat" id="activeCount">0</div><div class="small">z 22 slotů</div></div>
+  <div class="panel"><div class="stat-label">Aktivní hráči</div><div class="stat" id="activeCount">0</div><div class="small">z 21 slotů</div></div>
  </div>
  <div class="two" style="margin-top:14px">
   <div class="panel">
@@ -153,7 +199,7 @@ footer{text-align:center;padding:20px;color:#63758d;font-size:11px}
 
 <section id="page-roster" class="page">
  <div class="hero"><div class="eyebrow">MALATOVO STARS</div><h1>Moje sestava</h1>
- <p>Automatické NHL statistiky a správa všech 22 pozic.</p></div>
+ <p>Automatické NHL statistiky a správa všech 21 pozic.</p></div>
  <div class="actions">
   <button class="btn" onclick="refreshRoster()">↻ Aktualizovat statistiky</button>
   <button class="btn secondary" onclick="openAddPlayer()">＋ Přidat hráče</button>
@@ -165,7 +211,7 @@ footer{text-align:center;padding:20px;color:#63758d;font-size:11px}
   <div class="panel"><div class="stat-label">Střely</div><div class="stat" id="totalSOG">0</div></div>
  </div>
  <div class="two">
-  <div class="panel"><h2>🧊 Roster – 22 slotů</h2><div id="rosterSlots"></div></div>
+  <div class="panel"><h2>🧊 Roster – 21 slotů</h2><div id="rosterSlots"></div></div>
   <div class="panel"><h2>📈 Kategorie hráčů</h2><div id="rosterStats" class="empty">Přidej hráče nebo načti existující sestavu.</div></div>
  </div>
 </section>
@@ -303,11 +349,16 @@ function load(){
    }
   }
  }catch(e){console.warn("Načtení uložených dat selhalo",e);}
- app.players=app.players.map(p=>({
-  slot:"BN",stats:{},...p,
-  id:p.id||p.playerId||null,
-  nhlStats:p.nhlStats||p.stats||{}
- }));
+ const occupied=new Set();
+ app.players=app.players.map(p=>{
+  const player={slot:"BN",stats:{},...p,id:p.id||p.playerId||null,nhlStats:p.nhlStats||p.stats||{}};
+  player.position=normalizePosition(player.position||player.positionCode||player.pos||"UTIL");
+  let index=Number.isInteger(player._slotIndex)?player._slotIndex:-1;
+  if(index<0||index>=SLOTS.length||occupied.has(index)||SLOTS[index]!==player.slot)index=SLOTS.findIndex((slot,i)=>slot===player.slot&&!occupied.has(i));
+  if(index<0)index=SLOTS.findIndex((slot,i)=>slot==="BN"&&!occupied.has(i));
+  if(index>=0){player._slotIndex=index;player.slot=SLOTS[index];occupied.add(index);}else player._slotIndex=-1;
+  return player;
+ });
 }
 
 function showPage(name){
@@ -331,40 +382,100 @@ function statValue(p,key){
 function activePlayers(){
  return app.players.filter(p=>!["BN","IR","IR+"].includes(p.slot));
 }
+function playerPositions(p){
+ const raw=[p.position,p.positionCode,...(Array.isArray(p.eligiblePositions)?p.eligiblePositions:[])];
+ return [...new Set(raw.map(normalizePosition).filter(x=>["C","LW","RW","D","G"].includes(x)))];
+}
+function slotEligible(p,slot){
+ const positions=playerPositions(p);
+ if(["BN","IR","IR+"].includes(slot))return true;
+ if(slot==="UTIL")return positions.some(x=>x!=="G");
+ return positions.includes(slot);
+}
+function firstFreeSlot(slot){
+ return SLOTS.findIndex((s,i)=>s===slot&&!app.players.some(p=>p._slotIndex===i));
+}
+function movePlayerToSlot(playerId,targetIndex){
+ const p=app.players.find(x=>String(x.id)===String(playerId));
+ if(!p||!Number.isInteger(targetIndex)||targetIndex<0||targetIndex>=SLOTS.length)return;
+ const targetSlot=SLOTS[targetIndex];
+ if(!slotEligible(p,targetSlot)){
+  alert("Hráč nemá způsobilost pro pozici "+targetSlot+".");
+  renderRoster();
+  return;
+ }
+ const other=app.players.find(x=>x._slotIndex===targetIndex);
+ if(other&&other!==p){
+  const oldIndex=p._slotIndex,oldSlot=SLOTS[oldIndex];
+  if(!slotEligible(other,oldSlot)){
+   alert("Výměna není možná – "+playerName(other)+" nemůže hrát na pozici "+oldSlot+".");
+   return;
+  }
+  other._slotIndex=oldIndex;
+  other.slot=oldSlot;
+ }
+ p._slotIndex=targetIndex;
+ p.slot=targetSlot;
+ save();
+ renderRoster();
+}
+let draggedRosterPlayer=null;
+function rosterDragStart(event){
+ const id=event.currentTarget.dataset.playerId;
+ draggedRosterPlayer=id;
+ event.dataTransfer.effectAllowed="move";
+ event.dataTransfer.setData("text/plain",id);
+ event.currentTarget.classList.add("dragging");
+}
+function rosterDragEnd(event){
+ event.currentTarget.classList.remove("dragging");
+ document.querySelectorAll(".slot.drop-target").forEach(x=>x.classList.remove("drop-target"));
+}
+function rosterDragOver(event){
+ event.preventDefault();
+ event.dataTransfer.dropEffect="move";
+ event.currentTarget.classList.add("drop-target");
+}
+function rosterDragLeave(event){event.currentTarget.classList.remove("drop-target");}
+function rosterDrop(event,index){
+ event.preventDefault();
+ event.currentTarget.classList.remove("drop-target");
+ const id=event.dataTransfer.getData("text/plain")||draggedRosterPlayer;
+ if(id)movePlayerToSlot(id,index);
+ draggedRosterPlayer=null;
+}
 function renderRoster(){
  const container=$("rosterSlots");
  if(!container)return;
  container.innerHTML=SLOTS.map((slot,index)=>{
-  const player=app.players.find(p=>p.slot===slot&&p._slotIndex===index);
+  const player=app.players.find(p=>p._slotIndex===index);
   const name=player?playerName(player):"Volné místo";
   const team=player?(player.team||"NHL"):"";
-  return `<div class="slot">
-   <div class="pos">${slot}</div>
-   <div><div class="slot-name">${esc(name)}</div><div class="slot-team">${esc(team)}</div></div>
-   <div>${player?`<button class="btn secondary" onclick="removePlayer('${esc(player.id)}')">×</button>`:`<button class="btn secondary" onclick="openAddPlayer('${slot}',${index})">＋</button>`}</div>
-  </div>`;
+  const positions=player?playerPositions(player).join(" / "):"";
+  const options=player?SLOTS.map((target,i)=>({target,i}))
+   .filter(x=>slotEligible(player,x.target)&&(!app.players.some(p=>p._slotIndex===x.i)||x.i===index))
+   .map(x=>"<option value='"+x.i+"'>"+x.target+" · "+(x.i+1)+"</option>").join(""):"";
+  const controls=player
+   ?"<select data-player-id='"+esc(player.id)+"' aria-label='Přesunout "+esc(name)+"' onchange='movePlayerToSlot(this.dataset.playerId,Number(this.value))'><option value='"+index+"'>"+slot+" · aktuální</option>"+options+"</select><button class='btn secondary' data-player-id='"+esc(player.id)+"' onclick='removePlayer(this.dataset.playerId)' title='Odebrat'>×</button>"
+   :"<button class='btn secondary' onclick=\"openAddPlayer('"+slot+"',"+index+")\">＋ Přidat</button>";
+  const drag=player?"draggable='true' data-player-id='"+esc(player.id)+"' ondragstart='rosterDragStart(event)' ondragend='rosterDragEnd(event)'":"";
+  return "<div class='slot' "+drag+" ondragover='rosterDragOver(event)' ondragleave='rosterDragLeave(event)' ondrop='rosterDrop(event,"+index+")'><div class='pos'>"+slot+"<div class='slot-meta'>"+(index+1)+"/21</div></div><div><div class='slot-name'>"+esc(name)+"</div><div class='slot-team'>"+esc(team)+"</div>"+(player?"<div class='slot-meta'>"+esc(positions)+"</div>":"")+"</div><div class='slot-actions'>"+controls+"</div></div>";
  }).join("");
  const totals={G:0,A:0,PPP:0,pm:0,SOG:0,HIT:0,BLK:0};
  activePlayers().forEach(p=>{
-  totals.G+=statValue(p,"goals");
-  totals.A+=statValue(p,"assists");
-  totals.PPP+=statValue(p,"ppPoints");
-  totals.pm+=statValue(p,"plusMinus");
-  totals.SOG+=statValue(p,"shots");
-  totals.HIT+=statValue(p,"hits");
-  totals.BLK+=statValue(p,"blockedShots");
+  totals.G+=statValue(p,"goals");totals.A+=statValue(p,"assists");
+  totals.PPP+=statValue(p,"ppPoints");totals.pm+=statValue(p,"plusMinus");
+  totals.SOG+=statValue(p,"shots");totals.HIT+=statValue(p,"hits");totals.BLK+=statValue(p,"blockedShots");
  });
  $("totalG").textContent=totals.G;
  $("totalA").textContent=totals.A;
  $("totalP").textContent=totals.G+totals.A;
  $("totalSOG").textContent=totals.SOG;
  $("activeCount").textContent=activePlayers().length;
- $("rosterStats").innerHTML=`<table><tbody>
- ${[
- ["Góly",totals.G],["Asistence",totals.A],["PPP",totals.PPP],
- ["Plus/minus",totals.pm],["Střely",totals.SOG],["Hity",totals.HIT],["Bloky",totals.BLK]
- ].map(x=>`<tr><td>${x[0]}</td><td><b>${x[1]}</b></td></tr>`).join("")}
- </tbody></table>`;
+ $("rosterStats").innerHTML="<table><tbody>"+[
+  ["Góly",totals.G],["Asistence",totals.A],["PPP",totals.PPP],
+  ["Plus/minus",totals.pm],["Střely",totals.SOG],["Hity",totals.HIT],["Bloky",totals.BLK]
+ ].map(x=>"<tr><td>"+x[0]+"</td><td><b>"+x[1]+"</b></td></tr>").join("")+"</tbody></table>";
  save();
 }
 
@@ -380,7 +491,7 @@ function openAddPlayer(slot="BN",index=-1){
 function chooseSearchResult(results,slot,index){
  const options=results.slice(0,12).map((p,i)=>{
   const label=[p.name||p.fullName||p.playerName,p.teamAbbrev||p.team,p.positionCode||p.position].filter(Boolean).join(" · ");
-  return `${i+1}. ${label}`;
+  return (i+1)+". "+label;
  }).join("\n");
  const answer=prompt("Vyber číslo hráče:\n"+options);
  const chosen=results[Number(answer)-1];
@@ -407,28 +518,39 @@ function normalizePosition(pos){
 }
 function addPlayer(player){
  if(app.players.some(p=>String(p.id)===String(player.id))){
-  alert("Tento hráč už v sestavě je.");return;
+  alert("Tento hráč už v sestavě je.");
+  return;
  }
- const slot=player.slot||"BN";
- const index=player._slotIndex;
- if(index>=0){
-  const occupied=app.players.find(p=>p._slotIndex===index);
-  if(occupied){alert("Tato pozice je obsazená.");return;}
- }else{
-  const used=app.players.filter(p=>p.slot===slot).length;
-  const max=SLOTS.filter(s=>s===slot).length;
-  if(used>=max){player.slot="BN";player._slotIndex=SLOTS.indexOf("BN");}
-  else player._slotIndex=SLOTS.findIndex((s,i)=>s===slot&&!app.players.some(p=>p._slotIndex===i));
+ player.position=normalizePosition(player.position||"UTIL");
+ let index=Number.isInteger(player._slotIndex)?player._slotIndex:-1;
+ let slot=player.slot||"BN";
+ if(index<0||index>=SLOTS.length||SLOTS[index]!==slot||
+    app.players.some(p=>p._slotIndex===index)||!slotEligible(player,slot)){
+  index=slotEligible(player,slot)?firstFreeSlot(slot):-1;
  }
+ if(index<0){
+  const preferred=["C","LW","RW","D","G"].includes(player.position)?player.position:"BN";
+  index=firstFreeSlot(preferred);
+  slot=preferred;
+ }
+ if(index<0){
+  index=firstFreeSlot("BN");
+  slot="BN";
+ }
+ if(index<0){alert("V sestavě už není volné místo.");return;}
+ player.slot=SLOTS[index];
+ player._slotIndex=index;
  app.players.push(player);
- save();renderRoster();
+ save();
+ renderRoster();
 }
 function removePlayer(id){
  const p=app.players.find(x=>String(x.id)===String(id));
  if(!p)return;
  if(!confirm("Odebrat "+playerName(p)+" z aplikace?"))return;
  app.players=app.players.filter(x=>String(x.id)!==String(id));
- save();renderRoster();
+ save();
+ renderRoster();
 }
 
 function findLogArray(data){
@@ -557,27 +679,6 @@ function addProfileToRoster(){
   nhlStats:currentProfile.stats||{}});
 }
  
-/* Opravené přidávání hráčů do konkrétního volného slotu */
-function addPlayer(player){
- if(app.players.some(p=>String(p.id)===String(player.id))){
-  alert("Tento hráč už v sestavě je.");return;
- }
- let index=Number.isInteger(player._slotIndex)?player._slotIndex:-1;
- let slot=player.slot||"BN";
- if(index<0){
-  index=SLOTS.findIndex((s,i)=>s===slot&&!app.players.some(p=>p._slotIndex===i));
-  if(index<0){
-   slot="BN";
-   index=SLOTS.findIndex((s,i)=>s==="BN"&&!app.players.some(p=>p._slotIndex===i));
-  }
- }
- if(index<0){alert("V sestavě není volné místo.");return;}
- player.slot=SLOTS[index];
- player._slotIndex=index;
- app.players.push(player);
- save();renderRoster();
-}
-
 async function loadLiveScores(){
  const target=$("liveScores");
  try{
@@ -770,7 +871,7 @@ async function init(){
   log("NHL spojení připraveno.");
  }catch(e){log("NHL data se nepodařilo načíst: "+e.message,"error");}
 }
-init();
+init().finally(()=>{const loader=document.getElementById('loadingScreen');if(loader)setTimeout(()=>loader.classList.add('hide'),500);});
 </script>
 </body>
 </html>
